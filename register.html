@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>設備登録</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>設備登録</h1>
+    <a href="index.html" class="back-button">← メニューへ戻る</a>
+    
+    <section>
+      <p>基本情報</p>
+        <input type="text" id="equipment-name" placeholder="設備名">
+        <input type="text" id="model-number" placeholder="場所">
+        <p>点検日</p>
+        <input type="date" id="purchase-date">
+        <input type="time" id="warranty-date">
+        <p>次回点検日</p>
+        <input type="date" id="next-inspection-date" placeholder="次回点検日">
+        <select id="inspection-status">
+            <option value="なし">異常なし</option>
+            <option value="あり">異常あり</option>
+        </select>
+        <p>追記情報</p>
+        <textarea id="notes" placeholder="備考欄"></textarea><p></p>
+        <button onclick="registerEquipment()">登録</button>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

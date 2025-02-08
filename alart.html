@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>防犯ブザー</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .alarm-container {
+            text-align: center;
+        }
+
+        .sound {
+            font-size: 50px;
+            font-weight: bold;
+            color: red;
+        }
+
+        .caution {
+            font-size: 20px;
+            color: #ff9800;
+        }
+
+        .alarm-button {
+            margin-top: 20px;
+            padding: 15px 30px;
+            font-size: 18px;
+            color: white;
+            background-color: red;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+         .alarm-button:hover {
+            background-color: darkred;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="alarm-container">
+        <div class="sound">鳴動</div>
+        <div class="caution">注意</div>
+        <button class="alarm-button" onclick="playSound()">防犯ブザーを鳴らす</button>
+        
+        <!-- The audio element -->
+        <audio id="alarm-sound" src="alarm.mp3"></audio>
+    </div>
+
+    <script>
+        function playSound() {
+            var audio = document.getElementById("alarm-sound");
+            audio.play();
+        }
+    </script>
+
+</body>
+</html>

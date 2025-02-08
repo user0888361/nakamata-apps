@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>スケジュール</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .calendar { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; max-width: 400px; margin: auto; }
+        .day { border: 1px solid #ccc; padding: 20px; text-align: center; cursor: pointer; }
+        .input-box { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border: 1px solid #ccc; }
+    </style>
+</head>
+<body>
+    <h1 style="text-align:center;">スケジュール</h1>
+    <div class="calendar" id="calendar"></div>
+
+    <div class="input-box" id="inputBox">
+        <h3 id="selectedDate"></h3>
+        <textarea id="scheduleInput" rows="4" cols="30"></textarea><br>
+        <button onclick="saveSchedule()">保存</button>
+        <button onclick="closeInputBox()">閉じる</button>
+    </div>
+
+    <script>
+    const calendar = document.getElementById("calendar");
+        const inputBox = document.getElementById("inputBox");
+        const scheduleInput = document.getElementById("scheduleInput");
+        const selectedDateText = document.getElementById("selectedDate");
+        let selectedDate = "";
+
+        function generateCalendar() {
+            for (let i = 1; i <= 30; i++) {
+                const day = document.createElement("div");
+                day.className = "day";
+                day.textContent = i;
+                day.onclick = () => openInputBox(i);
+                calendar.appendChild(day);
+            }
+        }
+
+        function openInputBox(day) {
+            selectedDate = `2025-0#-${String(day).padStart(2, '0')}`;
+            selectedDateText.textContent = `日付: ${selectedDate}`;
+            scheduleInput.value = localStorage.getItem(selectedDate) || "";
+            inputBox.style.display = "block";
+        }
+
+        function closeInputBox() {
+            inputBox.style.display = "none";
+        }
+
+        function saveSchedule() {
+            localStorage.setItem(selectedDate, scheduleInput.value);
+            closeInputBox();
+        }
+
+        generateCalendar();
+    </script>
+</body>
+</html>
